@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Trámites</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Formulario de Trámites</h1>
+
+    <form id="formTramites">
+
+        <!-- Datos personales -->
+        <fieldset>
+            <legend>Datos Personales</legend>
+
+            <label>Nombre:
+                <input type="text" name="nombre" required>
+            </label>
+
+            <label>Edad:
+                <input type="number" name="edad" required>
+            </label>
+
+            <label>Nacionalidad:
+                <select name="nacionalidad" id="nacionalidad">
+                    <option value="argentino">Argentino</option>
+                    <option value="extranjero">Extranjero</option>
+                </select>
+            </label>
+
+            <div id="migracionesDiv" style="display:none;">
+                <label>
+                    <input type="checkbox" name="migraciones"> Migraciones
+                </label>
+            </div>
+        </fieldset>
+
+        <!-- Tipo de trámite -->
+        <fieldset>
+            <legend>Tipo de Trámite</legend>
+
+            <label>
+                <input type="radio" name="tramite" value="jubilacion"> Jubilación
+            </label>
+            <label>
+                <input type="radio" name="tramite" value="pension"> Pensión
+            </label>
+            <label>
+                <input type="radio" name="tramite" value="reconocimiento"> Reconocimiento
+            </label>
+            <label>
+                <input type="radio" name="tramite" value="reajuste"> Reajuste
+            </label>
+        </fieldset>
+
+        <!-- Opciones para Pensión -->
+        <div id="opcionesPension" style="display:none; margin-left:20px;">
+            <h4>Documentación para Pensión</h4>
+            <label><input type="checkbox" name="partida_defuncion"> Partida de defunción</label>
+            <label><input type="checkbox" name="partida_matrimonio"> Partida de matrimonio</label>
+
+            <p>¿Hijos?</p>
+            <label><input type="radio" name="hijos" value="si"> Sí</label>
+            <label><input type="radio" name="hijos" value="no"> No</label>
+
+            <div id="opcionesHijos" style="display:none; margin-left:20px;">
+                <label><input type="checkbox" name="partida_nacimiento"> Partida de nacimiento</label>
+                <label><input type="checkbox" name="copias_dni"> Copias de DNI</label>
+            </div>
+        </div>
+
+        <div id="diferencialesDiv" style="display:none;">
+    <fieldset>
+        <legend>Diferenciales</legend>
+
+        <label><input type="checkbox" id="chkPetroleo" name="petroleo"> Petróleo</label>
+        <div id="petroleoOpciones" style="display:none; margin-left:20px;">
+            <label><input type="checkbox" name="cert_65"> Certificación 6.5</label><br>
+            <label><input type="checkbox" name="cert_62"> Certificación 6.2</label>
+        </div>
+
+        <label><input type="checkbox" id="chkConstruccion" name="construccion"> Construcción</label>
+        <div id="construccionOpciones" style="display:none; margin-left:20px;">
+            <label><input type="checkbox" name="uocra"> UOCRA</label><br>
+            <label><input type="checkbox" name="ieric"> IERIC</label>
+        </div>
+    </fieldset>
+</div>
+
+        <!-- Apartado Autónomo -->
+        <div id="autonomoDiv" style="display:none;">
+            <fieldset>
+                <legend>Autónomo</legend>                
+                <label><input type="checkbox" name="sicam"> Sicam</label>
+            </fieldset>
+        </div>
+
+        <br>
+        <button type="button" id="guardarBtn">Guardar</button>
+        <button type="button" id="imprimirBtn">Imprimir</button>
+
+    </form>
+
+    <script src="formulario.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  margin: 20px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #065553;
+}
+
+form {
+  background: #fff;
+  padding: 20px 30px;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgb(0, 0, 1);
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 10px;
+  color: #065553;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+button {
+  background-color: #065553;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0bb49eb9;
+}
+
+#opcionesPension, #opcionesHijos, #diferencialesDiv, #autonomoDiv,
+#petroleoOpciones, #construccionOpciones, #migracionesDiv {
+  background: #f1f8ff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #cce0ff;
+}
+
+h4 {
+  margin-top: 0;
+  color: #019b86;
+}
+
+#diferencialesDiv, #autonomoDiv {
+    background: #019b862c;
+}
