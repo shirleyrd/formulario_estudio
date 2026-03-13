@@ -127,7 +127,7 @@ btnInfoMigraciones.addEventListener("click", toggleInfo);
 
 //Seleccion de empresas
 
-//Buscan ellos - mostrar si/No
+//Buscan ellos
 
 buscanEllos.addEventListener("change", () => {
   empresasBlock.style.display = buscanEllos.checked ? "block" : "none";
@@ -152,11 +152,21 @@ fetch ("empresas.json")
       option2.textContent = emp.text;
 
       empresaSelect.appendChild(option1);
-      empresaNosSelect.appendChild(option2);
-
-      
+      empresaNosSelect.appendChild(option2);    
 
     });
+
+    //  Agregar opción "Otros"
+          const otros1 = document.createElement("option");
+          otros1.value = "otros";
+          otros1.textContent = "Otros";
+          empresaSelect.appendChild(otros1);
+          
+          const otros2 = document.createElement("option");
+          otros2.value = "otros";
+          otros2.textContent = "Otros";
+          empresaNosSelect.appendChild(otros2);
+          
   })
   .catch (error => console.error("Error cargando empresas:", error));
 
