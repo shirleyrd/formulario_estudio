@@ -18,9 +18,13 @@ const checkboxApurado = document.querySelector("input[name='apurado']");
 const buscanEllos = document.querySelector("#buscanEllos");
 const buscamosNos = document.querySelector("#buscamosNos");
 const empresasBlock = document.querySelector("#empresasBlock");
+const empresasNosBlock = document.querySelector("#empresasNosBlock");
 const empresaSelect = document.querySelector("#empresaSelect");
+const empresaNosSelect = document.querySelector("#empresaNosSelect");
 const agregarEmpresaBtn = document.querySelector("#agregarEmpresa");
+const agregarNosEmpresaBtn = document.querySelector( "#agregarNosEmpresa");
 const listaEmpresas = document.querySelector("#listaEmpresas");
+const listaEmpresasNos = document.querySelector("#listaEmpresasNos");
 
 
 
@@ -59,7 +63,7 @@ const listaEmpresas = document.querySelector("#listaEmpresas");
     }
 });
 
-//Mostrar ocular casilla si/ no
+//Mostrar ocultar casilla si/ no
 
 checkboxSi.addEventListener("change", () => {
   if (checkboxSi.checked) {
@@ -130,19 +134,27 @@ buscanEllos.addEventListener("change", () => {
 });
 
 buscamosNos.addEventListener("change", () => {
-  empresasBlock.style.display = buscamosNos.checked ? "block" : "none";
+  empresasNosBlock.style.display = buscamosNos.checked ? "block" : "none";
 });
 
-//Traigo info del json
+//Traigo info del json 
 
 fetch ("empresas.json")
   .then(response => response.json())
   .then(empresas => {
     empresas.forEach(emp => {
-      const option = document.createElement("option");
-      option.value = emp.value;
-      option.textContent = emp.text;
-      empresaSelect.appendChild(option);
+      const option1 = document.createElement("option");
+      option1.value = emp.value;
+      option1.textContent = emp.text;
+
+      const option2 = document.createElement("option");
+      option2.value = emp.value;
+      option2.textContent = emp.text;
+
+      empresaSelect.appendChild(option1);
+      empresaNosSelect.appendChild(option2);
+
+      
 
     });
   })
@@ -173,6 +185,27 @@ fetch ("empresas.json")
     empresaSelect.value = "";
   }
 });
+
+agregarNosEmpresaBtn.addEventListener("click", () => {
+  const selectedValue = empresaNosSelect.value;
+  const selectedText = empresaNosSelect.options [empresaNosSelect.selectedIndex].text;
+
+  if (selectedValue) {
+    const li = document.createElement("li");
+    li.textContent = selectedText;
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Eliminar";
+    removeBtn.type = "button";
+    removeBtn.style.marginLeft = "10px";
+    removeBtn.addEventListener("click", () => li.remove());
+
+    li.appendChild(removeBtn);
+    listaEmpresasNos.appendChild(li);
+
+    empresaNosSelect.value = "";
+  }
+})
 
 
   function actualizarTramite() {
