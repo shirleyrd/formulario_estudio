@@ -181,10 +181,14 @@ fetch ("empresas.json")
     li.appendChild(removeBtn);
     listaEmpresas.appendChild(li);
 
+   
+
     // Limpiar select
     empresaSelect.value = "";
   }
 });
+
+// Agregar lista Nosotros
 
 agregarNosEmpresaBtn.addEventListener("click", () => {
   const selectedValue = empresaNosSelect.value;
@@ -207,6 +211,16 @@ agregarNosEmpresaBtn.addEventListener("click", () => {
   }
 })
 
+const otros1 = document.createElement("option");
+    otros1.value = "otros";
+    otros1.textContent = "Otros";
+
+    const otros2 = document.createElement("option");
+    otros2.value = "otros";
+    otros2.textContent = "Otros";
+
+    empresaEllosSelect.appendChild(otros1);
+    empresaNosotrosSelect.appendChild(otros2);
 
   function actualizarTramite() {
     let seleccionado = Array.from(tramiteRadios).find(r => r.checked);
