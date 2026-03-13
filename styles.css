@@ -13,6 +13,13 @@ h1 {
   color: #065553;
 }
 
+
+.btnInfo {
+  padding: 10px;
+  margin: 20px;
+
+}
+
 form {
   background: #fff;
   padding: 20px 30px;

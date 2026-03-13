@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
+    <title>Formulario Ingreso</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,42 +19,97 @@
             <label>Nombre:
                 <input type="text" name="nombre" required>
             </label>
-
-            <label>Edad:
-                <input type="number" name="edad" required>
-            </label>
-
-            <label>Nacionalidad:
-                <select name="nacionalidad" id="nacionalidad">
-                    <option value="argentino">Argentino</option>
-                    <option value="extranjero">Extranjero</option>
-                </select>
-            </label>
-
-            <div id="migracionesDiv" style="display:none;">
-                <label>
-                    <input type="checkbox" name="migraciones"> Migraciones
-                </label>
-            </div>
         </fieldset>
 
         <!-- Tipo de trámite -->
         <fieldset>
             <legend>Tipo de Trámite</legend>
 
-            <label>
-                <input type="radio" name="tramite" value="jubilacion"> Jubilación
-            </label>
-            <label>
-                <input type="radio" name="tramite" value="pension"> Pensión
-            </label>
-            <label>
-                <input type="radio" name="tramite" value="reconocimiento"> Reconocimiento
-            </label>
-            <label>
-                <input type="radio" name="tramite" value="reajuste"> Reajuste
-            </label>
+            <select name="tramiteOpcion" id="tipoTramite">
+                <option value="">--Seleccione--</option>
+                <option value="jubilacion">Jubilacion</option>
+                <option value="pension">Pension</option>
+            </select>                     
         </fieldset>
+
+        <!-- Se muestra si eligen "jubilacion" -->
+        <div id="trabajandoBlock" style="display: none; margin-top: 10px;">
+            <p>¿Está trabajando?</p>
+            <label><input type="checkbox" name="trabajando" value="si"> Sí</label>
+            <label><input type="checkbox" name="trabajando" value="no"> No</label>
+
+           <div id="apuradoBlock" style="display: none; margin-top: 10px;">
+              <label><input type="checkbox" name="apurado" value="si"> ¿Está apurado?</label>
+           </div>
+        </div>
+        
+        <fieldset>
+            <label>Nacionalidad:</label>
+                <select name="nacionalidad" id="nacionalidad">
+                    <option value="argentino">Argentino</option>
+                    <option value="extranjero">Extranjero</option>
+                </select>                
+        </fieldset> 
+
+            
+            <div id="migracionesDiv" style="display:none;">
+                <label>
+                    <input type="checkbox" name="anses"> Preguntar en Anses
+                </label>
+                <label>
+                    <input type="checkbox" name="migraciones"> Migraciones
+                </label>
+            </div>
+
+            <div class="info">
+                    <button id="btnInfoMigraciones" class="btnInfo" type="button">
+                        INFO
+                    </button>
+                  <div id="infoBox" style="display: none;">
+                    <p>info a completar.</p>
+                  </div>            
+                </div>
+        </fieldset>
+
+        
+            
+            
+    <fieldset>
+       <legend>Certificaciones</legend>
+
+       <label>
+         <input type="checkbox" id="buscanEllos"> Buscan ellos
+       </label>
+
+       <!-- Oculto hasta que selecciono "¿Buscan ellos?" -->
+         <div id="empresasBlock" style="display:none; margin-top:10px;">
+             <label for="empresaSelect">Seleccione empresa:</label>
+             <select id="empresaSelect">
+               <option value="">--Seleccione--</option>
+             </select>
+             <button type="button" id="agregarEmpresa">Agregar</button>
+             <ul id="listaEmpresas"></ul>
+         </div>
+
+         
+       <label>
+         <input type="checkbox" id="buscamosNos"> Buscamos nosotros
+       </label>
+
+       <!-- Oculto hasta que selecciono "Buscamos Nosotros" -->
+         <div id="empresasBlock" style="display:none; margin-top:10px;">
+             <label for="empresaSelect">Seleccione empresa:</label>
+             <select id="empresaSelect">
+               <option value="">--Seleccione--</option>
+             </select>
+             <button type="button" id="agregarEmpresa">Agregar</button>
+             <ul id="listaEmpresas"></ul>
+         </div>
+    </fieldset>
+             
+        
+
+        
 
         <!-- Opciones para Pensión -->
         <div id="opcionesPension" style="display:none; margin-left:20px;">
