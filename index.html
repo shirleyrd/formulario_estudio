@@ -52,21 +52,14 @@
         </fieldset> 
 
             
-            <div id="migracionesDiv" style="display:none;">
-                <label>
-                    <input type="checkbox" name="anses"> Preguntar en Anses
-                </label>
-                <label>
-                    <input type="checkbox" name="migraciones"> Migraciones
-                </label>
-            </div>
+            <div id="migracionesDiv" style="display:none;"></div>
 
             <div class="info">
                     <button id="btnInfoMigraciones" class="btnInfo" type="button">
                         INFO
                     </button>
                   <div id="infoBox" style="display: none;">
-                    <p>info a completar.</p>
+                    <p>info a completar</p>
                   </div>            
                 </div>
         </fieldset>
@@ -87,6 +80,7 @@
              <select id="empresaSelect">
                <option value="">--Seleccione--</option>
              </select>
+             
              <input type="text" id="empresaOtra" placeholder="Ingrese nombre de empresa" style="display:none;">
              <button type="button" id="agregarEmpresa">Agregar</button>
              <ul id="listaEmpresas"></ul>
@@ -107,10 +101,19 @@
              <button type="button" id="agregarNosEmpresa">Agregar</button>
              <ul id="listaEmpresasNos"></ul>
          </div>
-    </fieldset>
-             
-        
 
+
+         <!--Boton para observaciones activar / desactivar-->
+         
+         <div class="observaciones">
+            <button type ="button" id="btnObservacionEmpresas">Observaciones</button>
+            <div id="observaBox" style= "display: none;">
+                <textarea name="textarea" rows="10" cols="50">Write something here</textarea>
+            </div>
+         </div>
+
+
+    </fieldset>           
         
 
         <!-- Opciones para Pensión -->
