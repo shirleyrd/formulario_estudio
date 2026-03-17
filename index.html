@@ -63,8 +63,8 @@
                   </div>            
             </div>     
 
-        
-    <fieldset>
+<div id="bloquesJubilacion" style="display: none;">        
+<fieldset>
        <legend>Certificaciones</legend>
 
        <label>
@@ -130,7 +130,7 @@
            <label><input type="checkbox"> Pedir constancia</label>
          </div>
 
-        <button type="button" id="btnObservacionUocra">Observaciones</button>
+        <button type="button" id="btnObservacionUocra">Observaciones Uocra</button>
 
         <div id="observaBoxUocra" style="display: none;">
           <textarea id="uocraArea" placeholder="Escribir aquí..."></textarea>
@@ -141,13 +141,34 @@
 
     </div>
 
+</div>      
+
+</fieldset>  
+
+
+<fieldset>
+    <legend>Autónomo</legend>   
+
+    <div id="autonomoBlock" style="display: block; margin-top: 10px;">
+        <p>¿Tiene autónomo?</p>
+        <label><input type="radio" name="autonomo" value="si"> Sí</label>
+        <label><input type="radio" name="autonomo" value="no"> No</label>
+
+        <div id="sicamBlock" style="display: none; margin-top: 10px;">
+              <label><input type="checkbox" name="sicam" value="si"> Hacer SICAM</label>
+        </div>
+
+        <button type="button" id="btnObservacionSicam">Observaciones Autonomo</button>
+
+        <div id = "observaBoxSicam" style="display: none;">
+            <textarea id="sicamArea" placeholder="Escribir aqui..."></textarea>
+            <button type="button" id="btnGuardarObservacionSicam">Guardar</button>
+            <div id="observacionesGuardadasSicam"></div>
+        </div>
+    </div>
+</fieldset>
+
 </div>
-
-          
-
-  
-
-    </fieldset>           
         
 
         <!-- Opciones para Pensión -->

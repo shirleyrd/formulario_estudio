@@ -46,6 +46,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnObservacionUocra = document.getElementById("btnObservacionUocra");
   const observaBoxUocra = document.getElementById("observaBoxUocra");
   const btnGuardarObservacionUocra = document.getElementById("btnGuardarObservacionUocra"); 
+
+  //Bloque Sicam
+
+  const radiosAutonomo = document.querySelectorAll("input[name='autonomo']");
+  const sicamBlock = document.getElementById("sicamBlock");
+
+
+  //Observacion Sicam
+
+  const btnObservacionSicam = document.getElementById("btnObservacionSicam");
+  const observaBoxSicam = document.getElementById("observaBoxSicam");
+  const btnGuardarObservacionSicam = document.getElementById("btnGuardarObservacionSicam");
   
 
   // Otros bloques
@@ -168,6 +180,45 @@ if (btnGuardarObservacionUocra) {
     document.getElementById("uocraArea").value = "";
   });
 }
+
+
+//Autonomo
+
+radiosAutonomo.forEach(radio => {
+  radio.addEventListener("change", () => {
+    sicamBlock.style.display =
+      radio.value === "si" && radio.checked ? "block" : "none";
+  });
+});
+
+//Boton observaciones sicam
+
+if (btnObservacionSicam && observaBoxSicam) {
+  btnObservacionSicam.addEventListener("click", () => {
+    toggleObservaciones(observaBoxSicam);
+  });
+}
+
+
+if (btnGuardarObservacionSicam) {
+  btnGuardarObservacionSicam.addEventListener("click", () => {
+    const texto = document.getElementById("sicamArea").value.trim();
+    const contenedor = document.getElementById("observacionesGuardadasSicam");
+
+    if (!texto) {
+      alert("Escribí algo primero");
+      return;
+    }
+
+    const p = document.createElement("p");
+    p.textContent = texto;
+
+    contenedor.appendChild(p);
+
+    document.getElementById("sicamArea").value = "";
+  });
+}
+
 
   // Tipo de trámite
   tipoTramite.addEventListener("change", () => {
@@ -347,4 +398,20 @@ agregarNosEmpresaBtn.addEventListener("click", () => {
   // Botones generales
   document.getElementById("guardarBtn").addEventListener("click", () => alert("Guardado simulado"));
   document.getElementById("imprimirBtn").addEventListener("click", () => window.print());
+
+  const tipoTramiteSelect = document.getElementById("tipoTramite");
+  const bloquesJubilacion = document.getElementById("bloquesJubilacion");
+
+function mostrarBloquesJubilacion() {
+  if (tipoTramiteSelect.value === "jubilacion") {
+    bloquesJubilacion.style.display = "block";
+  } else {
+    bloquesJubilacion.style.display = "none";
+  }
+}
+
+tipoTramiteSelect.addEventListener("change", mostrarBloquesJubilacion);
+
+// ejecutar al cargar
+mostrarBloquesJubilacion();
 });
