@@ -61,12 +61,9 @@
                   <div id="infoBox" style="display: none;">
                     <p>info a completar</p>
                   </div>            
-                </div>
-        </fieldset>
+            </div>     
 
         
-            
-            
     <fieldset>
        <legend>Certificaciones</legend>
 
@@ -103,15 +100,52 @@
          </div>
 
 
-         <!--Boton para observaciones activar / desactivar-->
+         <!--Boton para observaciones activar / desactivar observaciones-->
          
          <div class="observaciones">
-            <button type ="button" id="btnObservacionEmpresas">Observaciones</button>
+            <button class="btnEmpresa" type ="button" id="btnObservacionEmpresas">Observaciones</button>
             <div id="observaBox" style= "display: none;">
-                <textarea name="textarea" rows="10" cols="50">Write something here</textarea>
+                <textarea name="textarea" rows="10" cols="50" placeholder="Escribir aqui..."></textarea>
+                <div id="observacionesGuardadas"></div>
+                <button class="guardar" type="button" id="btnGuardarObservacion">Guardar</button>
             </div>
          </div>
 
+<div id="uocraBlock">
+        <p>¿Tiene UOCRA?</p>
+
+        <label>
+            <input type="radio" name="uocra" value="si"> Sí
+        </label>
+
+        <label>
+            <input type="radio" name="uocra" value="no"> No
+        </label>
+
+        <!-- TODO lo que depende de "Sí" -->
+    <div id="uocraContenido" style="display: none; margin-top: 10px;">
+
+         <div>
+           <label><input type="checkbox"> Tiene constancia</label>
+           <label><input type="checkbox"> Pedir constancia</label>
+         </div>
+
+        <button type="button" id="btnObservacionUocra">Observaciones</button>
+
+        <div id="observaBoxUocra" style="display: none;">
+          <textarea id="uocraArea" placeholder="Escribir aquí..."></textarea>
+          <button type="button" id="btnGuardarObservacionUocra">Guardar</button>
+    
+          <div id="observacionesGuardadasUocra"></div>
+        </div>
+
+    </div>
+
+</div>
+
+          
+
+  
 
     </fieldset>           
         

@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnInfoMigraciones = document.getElementById("btnInfoMigraciones");
   const infoBox = document.getElementById("infoBox");
 
-  const btnObservacionEmpresas = document.getElementById("observacionEmpresas");
+  const btnObservacionEmpresas = document.getElementById("btnObservacionEmpresas");
   const observaBox = document.getElementById("observaBox");
 
   const tipoTramite = document.querySelector("#tipoTramite");
@@ -30,6 +30,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const listaEmpresasNos = document.querySelector("#listaEmpresasNos");
   const empresaOtraInput = document.querySelector("#empresaOtra");  
   const empresaNosOtraInput = document.querySelector("#empresaNosOtra");
+
+  //Bloque observaciones
+
+  const textarea = document.querySelector("#observaBox textarea");
+  const contenedor = document.getElementById("observacionesGuardadas");
+  const btnGuardarObservacion = document.getElementById("btnGuardarObservacion");
+
+  // Bloque Uocra
+
+  const radiosUocra = document.querySelectorAll("input[name='uocra']");
+  const uocraContenido = document.getElementById("uocraContenido");
+ 
+  //Observacion uocra
+  const btnObservacionUocra = document.getElementById("btnObservacionUocra");
+  const observaBoxUocra = document.getElementById("observaBoxUocra");
+  const btnGuardarObservacionUocra = document.getElementById("btnGuardarObservacionUocra"); 
+  
 
   // Otros bloques
   const opcionesPension = document.getElementById("opcionesPension");
@@ -64,6 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function toggleInfo() {
     infoBox.style.display = infoBox.style.display === "none" ? "block" : "none";
   }
+
+
 
   // Tipo de trámite
   function actualizarTramite() {
@@ -110,7 +129,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   //Boton observaciones
-  observacionEmpresas.addEventListener("click", toggleObservaciones);
+  btnObservacionEmpresas.addEventListener("click", () => {
+  toggleObservaciones(observaBox);
+});
+
+  //UOCRA
+
+  radiosUocra.forEach(radio => {
+  radio.addEventListener("change", () => {
+    uocraContenido.style.display =
+      radio.value === "si" && radio.checked ? "block" : "none";
+  });
+});
+  
+  //Boton observaciones uocra
+
+  if (btnObservacionUocra && observaBoxUocra) {
+  btnObservacionUocra.addEventListener("click", () => {
+    toggleObservaciones(observaBoxUocra);
+  });
+}
+
+if (btnGuardarObservacionUocra) {
+  btnGuardarObservacionUocra.addEventListener("click", () => {
+    const texto = document.getElementById("uocraArea").value.trim();
+    const contenedor = document.getElementById("observacionesGuardadasUocra");
+
+    if (!texto) {
+      alert("Escribí algo primero");
+      return;
+    }
+
+    const p = document.createElement("p");
+    p.textContent = texto;
+
+    contenedor.appendChild(p);
+
+    document.getElementById("uocraArea").value = "";
+  });
+}
 
   // Tipo de trámite
   tipoTramite.addEventListener("change", () => {
@@ -249,13 +306,42 @@ agregarNosEmpresaBtn.addEventListener("click", () => {
 });
   
 
- 
+  //Guardar observaciones
+
+  btnGuardarObservacion.addEventListener("click", () => {
+  const texto = textarea.value.trim();
+
+  if (!texto) {
+    alert("Escribí algo primero");
+    return;
+  }
+
+  const p = document.createElement("p");
+  p.textContent = texto;
+
+  contenedor.appendChild(p);
+
+  textarea.value = "";
+});
+
+//FUNCION UOCRA
+
   
+
+  //Funcion generica para reutilizar despues (aplico a uocra ahora boton observaciones)
+
+  function toggleObservaciones(observacionesUocra) {
+  observacionesUocra.style.display =
+    observacionesUocra.style.display === "none" ? "block" : "none";
+  }
+  
+
+
   // Ejecutar funciones al cargar la página
   actualizarMigraciones();
   actualizarTramite();
   actualizarHijos();
-  actualizarPetroleo();
+  actualizarPetroleo();  
   actualizarConstruccion();
 
   // Botones generales
