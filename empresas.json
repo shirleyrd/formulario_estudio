@@ -2,7 +2,7 @@
     {"value": "sanAntonio", "text": "San Antonio" },
     {"value": "pecom", "text": "Pecom" },
     {"value": "slb", "text": "Schlumberger" },
-    {"value": "clear", "text": "Clear" },
+    {"value": "clear", "text": "Clear Petroleum" },
     {"value": "petrosar", "text": "Petrosar" },
     {"value": "incro", "text": "Incro" },
     {"value": "tuboscope", "text": "Tuboscope" },
@@ -16,7 +16,8 @@
     {"value": "burgwardt", "text": "Burgwardt" },
     {"value": "dls", "text": "DLS" },
     {"value": "pae", "text": "PAE" },
-    {"value": "tecpetrol", "text": "Tecpetrol" }
+    {"value": "tecpetrol", "text": "Tecpetrol" },
+    {"value": "aesa", "text": "A Evangelista" }
 
 
 ]

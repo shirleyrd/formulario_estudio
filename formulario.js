@@ -58,7 +58,33 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnObservacionSicam = document.getElementById("btnObservacionSicam");
   const observaBoxSicam = document.getElementById("observaBoxSicam");
   const btnGuardarObservacionSicam = document.getElementById("btnGuardarObservacionSicam");
-  
+
+
+  //Bloque Pension
+
+  const bloquesJubilacion = document.getElementById("bloquesJubilacion");
+  const pensionBlock = document.getElementById("pensionBlock");
+  const fieldsetPension = document.getElementById("fieldsetPension");
+ 
+ 
+  //Pension- revisar
+
+  const chkPensionJubilado = document.getElementById("chkPensionJubilado");
+  const pensionJubiladoContenido = document.getElementById("pensionJubiladoContenido");
+
+
+  //Opciones Pension Jubilado
+   const radioTieneBeneficio = document.getElementById("radioTieneBeneficio");
+   const radioAnses = document.getElementById("radioAnses");
+   const beneficioBox = document. getElementById("beneficioBox"); 
+
+   
+
+   //Boton beneficio
+
+  const inputBeneficio = document.getElementById("inputBeneficio");
+  const btnFijarBeneficio = document.getElementById("btnFijarBeneficio");
+  const beneficioGuardado = document.getElementById("beneficioGuardado");
 
   // Otros bloques
   const opcionesPension = document.getElementById("opcionesPension");
@@ -94,43 +120,47 @@ document.addEventListener("DOMContentLoaded", function () {
     infoBox.style.display = infoBox.style.display === "none" ? "block" : "none";
   }
 
-
+//-------------------------------------------------------------------------------------------------//
 
   // Tipo de trámite
-  function actualizarTramite() {
-    let seleccionado = Array.from(document.querySelectorAll("input[name='tramite']")).find(r => r.checked);
-    if (!seleccionado) {
-      opcionesPension.style.display = "none";
-      diferencialesDiv.style.display = "none";
-      autonomoDiv.style.display = "none";
-      return;
-    }
+  tipoTramite.addEventListener("change", () => {
 
-    if (seleccionado.value === "pension") {
-      opcionesPension.style.display = "block";
-      diferencialesDiv.style.display = "none";
-      autonomoDiv.style.display = "none";
-    } else if (seleccionado.value === "jubilacion") {
-      opcionesPension.style.display = "none";
-      diferencialesDiv.style.display = "block";
-      autonomoDiv.style.display = "block";
-    } else {
-      opcionesPension.style.display = "none";
-      diferencialesDiv.style.display = "none";
-      autonomoDiv.style.display = "none";
-    }
+  if (tipoTramite.value === "jubilacion") {
+
+    // MOSTRAR JUBILACIÓN
+    trabajandoBlock.style.display = "block";
+    bloquesJubilacion.style.display = "block";
+
+    //  OCULTAR PENSIÓN
+    fieldsetPension.style.display = "none";
+
+  } else if (tipoTramite.value === "pension") {
+
+    // MOSTRAR PENSIÓN
+    fieldsetPension.style.display = "block";
+    pensionBlock.style.display = "block";
+
+    //  OCULTAR JUBILACIÓN
+    trabajandoBlock.style.display = "none";
+    bloquesJubilacion.style.display = "none";
+
+    // limpiar jubilación
+    apuradoBlock.style.display = "none";
+    checkboxSi.checked = false;
+    checkboxNo.checked = false;
+    checkboxApurado.checked = false;
+
+  } else {
+
+    //  OCULTAR TODO
+    trabajandoBlock.style.display = "none";
+    bloquesJubilacion.style.display = "none";
+    fieldsetPension.style.display = "none";
   }
 
-  // Hijos
-  function actualizarHijos() {
-    let seleccionado = Array.from(hijosRadios).find(r => r.checked);
-    opcionesHijos.style.display = seleccionado && seleccionado.value === "si" ? "block" : "none";
-  }
+});
 
-  // Petroleo / Construcción
-  function actualizarPetroleo() { petroleoOpciones.style.display = chkPetroleo.checked ? "block" : "none"; }
-  function actualizarConstruccion() { construccionOpciones.style.display = chkConstruccion.checked ? "block" : "none"; }
-
+ 
   // ----------------- EVENTOS -----------------
 
   // Nacionalidad
@@ -220,20 +250,7 @@ if (btnGuardarObservacionSicam) {
 }
 
 
-  // Tipo de trámite
-  tipoTramite.addEventListener("change", () => {
-    if (tipoTramite.value === "jubilacion") {
-      trabajandoBlock.style.display = "block";
-    } else {
-      trabajandoBlock.style.display = "none";
-      apuradoBlock.style.display = "none";
-      checkboxSi.checked = false;
-      checkboxNo.checked = false;
-      checkboxApurado.checked = false;
-      checkboxNo.style.display = "inline";
-    }
-  });
-
+  
   // Checkbox si/no trabajando
   checkboxSi.addEventListener("change", () => {
     if (checkboxSi.checked) {
@@ -385,12 +402,59 @@ agregarNosEmpresaBtn.addEventListener("click", () => {
   observacionesUocra.style.display =
     observacionesUocra.style.display === "none" ? "block" : "none";
   }
-  
+   
+// Funcion pension - jubi
+
+chkPensionJubilado.addEventListener("change", function () {
+        if (this.checked) {
+            pensionJubiladoContenido.style.display = "block";
+        } else {
+            pensionJubiladoContenido.style.display = "none";
+
+            // limpiar radios y input
+            radioTieneBeneficio.checked = false;
+            radioAnses.checked = false;
+            beneficioBox.style.display = "none";
+            beneficioBox.querySelector("input").value = "";
+        }
+    });
+
+    // 🔹 Mostrar input si tiene beneficio
+    radioTieneBeneficio.addEventListener("change", function () {
+    if (this.checked) {
+        beneficioBox.style.display = "block";
+        btnFijarBeneficio.style.display = "inline-block";
+
+        // ocultar ANSES
+        radioAnses.parentElement.style.display = "none";
+    }
+});
+
+radioAnses.addEventListener("change", function () {
+    if (this.checked) {
+        beneficioBox.style.display = "none";
+        beneficioBox.querySelector("input").value = "";
+
+        //  volver a mostrar ANSES (por si volvés atrás)
+        radioAnses.parentElement.style.display = "block";
+    }
+});
+
+btnFijarBeneficio.addEventListener("click", () => {
+    const valor = beneficioBox.querySelector("input").value.trim();
+
+    if (!valor) {
+        alert("Ingrese un número de beneficio");
+        return;
+    }
+
+    beneficioGuardado.innerHTML = `<p><strong>Nro de beneficio:</strong> ${valor}</p>`;
+});
+
 
 
   // Ejecutar funciones al cargar la página
-  actualizarMigraciones();
-  actualizarTramite();
+  actualizarMigraciones();  
   actualizarHijos();
   actualizarPetroleo();  
   actualizarConstruccion();
@@ -399,7 +463,7 @@ agregarNosEmpresaBtn.addEventListener("click", () => {
   document.getElementById("guardarBtn").addEventListener("click", () => alert("Guardado simulado"));
   document.getElementById("imprimirBtn").addEventListener("click", () => window.print());
 
-  const tipoTramiteSelect = document.getElementById("tipoTramite");
+ /* const tipoTramiteSelect = document.getElementById("tipoTramite");
   const bloquesJubilacion = document.getElementById("bloquesJubilacion");
 
 function mostrarBloquesJubilacion() {
@@ -413,5 +477,5 @@ function mostrarBloquesJubilacion() {
 tipoTramiteSelect.addEventListener("change", mostrarBloquesJubilacion);
 
 // ejecutar al cargar
-mostrarBloquesJubilacion();
-});
+mostrarBloquesJubilacion();*/
+}); 
